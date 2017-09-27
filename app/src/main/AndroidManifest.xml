@@ -13,27 +13,21 @@
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="com.android.vending.BILLING" />
 
-
     <application
-        android:name="com.innocent.bit.BitApp"
+        android:name=".BitApp"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="Bit"
         android:theme="@style/AppTheme.FullScreen.Light"
         tools:replace="android:allowBackup, android:label">
-
         <activity
-            android:name="com.innocent.bit.activities.MainActivity"
+            android:name=".activities.MainActivity"
             android:label="Bit"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.CATEGORY_APP_MUSIC" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data android:scheme="file" />
@@ -67,26 +61,21 @@
                 <data android:mimeType="application/itunes" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.innocent.bit.activities.SettingsActivity"
+            android:name=".activities.SettingsActivity"
             android:theme="@style/AppThemeNormalLight" />
-
         <activity
-            android:name="com.innocent.bit.activities.PlaylistDetailActivity"
+            android:name=".activities.PlaylistDetailActivity"
             android:theme="@style/AppTheme.FullScreen.Light" />
-
         <activity
-            android:name="com.innocent.bit.activities.SearchActivity"
+            android:name=".activities.SearchActivity"
             android:theme="@style/AppThemeNormalLight" />
-
         <activity
-            android:name="com.innocent.bit.activities.NowPlayingActivity"
+            android:name=".activities.NowPlayingActivity"
             android:theme="@style/AppTheme.FullScreen.Light" />
+        <activity android:name=".activities.DonateActivity" />
 
-        <activity android:name="com.innocent.bit.activities.DonateActivity"/>
-
-        <receiver android:name="com.innocent.bit.helpers.MediaButtonIntentReceiver">
+        <receiver android:name=".helpers.MediaButtonIntentReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
                 <action android:name="android.media.AUDIO_BECOMING_NOISY" />
@@ -94,53 +83,72 @@
         </receiver>
         <!-- Music service -->
         <service
-            android:name="com.innocent.bit.MusicService"
+            android:name=".MusicService"
             android:label="@string/app_name"
             android:process=":main" />
-
         <service
-            android:name="com.innocent.bit.WearBrowserService"
+            android:name=".WearBrowserService"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.media.browse.MediaBrowserService" />
             </intent-filter>
         </service>
 
-        <!--use your own api key for fabric-->
+        <!-- use your own api key for fabric -->
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="@string/fabric_api_key" />
 
-        <receiver android:name="com.innocent.bit.widgets.desktop.StandardWidget" android:label="@string/widget_standard">
+        <receiver
+            android:name=".widgets.desktop.StandardWidget"
+            android:label="@string/widget_standard">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.naman14.timber.metachanged" />
                 <action android:name="com.naman14.timber.playstatechanged" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider"
+
+            <meta-data
+                android:name="android.appwidget.provider"
                 android:resource="@xml/widget_standard" />
         </receiver>
-
-        <receiver android:name="com.innocent.bit.widgets.desktop.WhiteWidget" android:label="@string/widget_white">
+        <receiver
+            android:name=".widgets.desktop.WhiteWidget"
+            android:label="@string/widget_white">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.naman14.timber.metachanged" />
                 <action android:name="com.naman14.timber.playstatechanged" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider"
+
+            <meta-data
+                android:name="android.appwidget.provider"
                 android:resource="@xml/widget_white" />
         </receiver>
-
-        <receiver android:name="com.innocent.bit.widgets.desktop.SmallWidget" android:label="@string/widget_small">
+        <receiver
+            android:name=".widgets.desktop.SmallWidget"
+            android:label="@string/widget_small">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.naman14.timber.metachanged" />
                 <action android:name="com.naman14.timber.playstatechanged" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider"
+
+            <meta-data
+                android:name="android.appwidget.provider"
                 android:resource="@xml/widget_small" />
         </receiver>
 
+        <activity android:name=".activities.SplashAvtivity"
+                android:theme="@style/SplashTheme"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.CATEGORY_APP_MUSIC" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

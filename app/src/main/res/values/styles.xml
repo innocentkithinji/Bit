@@ -134,6 +134,9 @@
         <item name="cardBackgroundColor">@color/window_background_black</item>
     </style>
 
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_backround</item>
+    </style>
 
 
 
